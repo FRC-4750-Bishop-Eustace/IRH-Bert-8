@@ -1,4 +1,4 @@
-package frc.commands;
+package frc.auto;
 
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
@@ -18,9 +18,11 @@ public class DriveToDistance extends Command {
 // Called just before this Command runs the first time
   @Override
   protected void initialize() {
-    Robot.driveTrain.reset();
+    // reset the encoders in initializing
+    Robot.driveTrain.reset(); 
   }
 
+  // gets the distance the robot has traveled
   private double getDistance() {
     return Math.abs((Robot.driveTrain.getLeftDistanceInFeet()) + (Robot.driveTrain.getRightDistanceInFeet()) / 2);
   }
@@ -28,8 +30,8 @@ public class DriveToDistance extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-
-    System.out.println("executed");
+    // If we've driven 5 feet set the drivetrain's speed and rotation to 0, if not set speed to 50%
+    System.out.println("executed"); // printing for troubleshooting - executed for execute loop
     if (Math.abs(getDistance()) >= 5){
       Robot.driveTrain.joystickDrive(0, 0);
    } else{
@@ -37,6 +39,7 @@ public class DriveToDistance extends Command {
    }
 
 
+   // these were previous attempts that may have some merit but didn't work when tested, but may be something that we look back into later so I don't want to delete these
   /* 
    double leftPosition = Robot.driveTrain.leftMaster.getSelectedSensorPosition() * Robot.driveTrain.distancePerPulse;
    double rightPosition = Robot.driveTrain.rightMaster.getSelectedSensorPosition() * Robot.driveTrain.distancePerPulse;
@@ -54,13 +57,13 @@ public class DriveToDistance extends Command {
   @Override
   protected boolean isFinished() {
 //    System.out.println("isFinished");
-//    return Robot.driveTrain.getLeftDistanceInFeet() >= distance;
 
     if(Robot.driveTrain.getLeftDistanceInFeet() < 5){
       end = false;
     } else if(Robot.driveTrain.getLeftDistanceInFeet() >= 5){
       end = true;
     }
+    // print statement for troubleshooting - end is true or end is false
     System.out.println("end is " + end);
     return end;
   }

@@ -24,13 +24,6 @@ public class DriveTrain extends Subsystem {
     public Encoder leftDriveEncoder, rightDriveEncoder;
 
     public double distancePerPulse = 0.00447; // ((7 * Math.PI) / 4096) / 12;
-    
-    // The total degrees off we can call "on target"
-    double driveStraightTolerance = 0.005;
-    double limelightTolerance = 0.7;
-    // PID constants
-    double kP = 0.15;
-    double setpoint = 0;
 
     public DriveTrain() {
         // Initialize motors
@@ -86,10 +79,12 @@ public class DriveTrain extends Subsystem {
     //Get the distance in feet
 
     public double getLeftDistanceInFeet(){
+        // raw distance * distancePerPulse
        return leftDriveEncoder.getDistance();
     }
 
     public double getRightDistanceInFeet(){
+        // raw distance * distancePerPulse
        return rightDriveEncoder.getDistance();
     }
 

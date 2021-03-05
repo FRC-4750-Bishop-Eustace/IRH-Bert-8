@@ -4,7 +4,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.ConditionalCommand;
 import edu.wpi.first.wpilibj.command.PrintCommand;
-import frc.commands.DriveToDistance;
+import frc.auto.DriveToDistance;
 import frc.commands.RunShooter;
 import frc.commands.StopShooter;
 import frc.robot.Robot;

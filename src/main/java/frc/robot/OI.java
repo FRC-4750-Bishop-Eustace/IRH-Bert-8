@@ -3,7 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
-import frc.commands.DriveToDistance;
+import frc.auto.DriveToDistance;
 import frc.commands.Indexer;
 import frc.commands.ResetIndexer;
 // import frc.commands.ReverseDriveTrain;
@@ -64,6 +64,7 @@ public class OI {
         reverseIntake.whileHeld(new ReverseIntake());
         reverseIntake.whenReleased(new StopIntake());
 
+        // test button so we don't worry about auto failing
         autoTest.whenReleased(new DriveToDistance());
         }
     }
